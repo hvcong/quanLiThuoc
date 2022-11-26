@@ -24,7 +24,7 @@ public class TestEntityView extends JFrame {
 
 		
 				try {
-					testEntityManage = (ITestEntityManage) Naming.lookup(Constants.BASE_PATH_RMI + "testentity");
+					testEntityManage = (ITestEntityManage) Naming.lookup(Constants.BASE_PATH_RMI + Constants.STUB_TEST_ENTITY);
 					System.out.println("remote ok");
 				} catch (MalformedURLException e) {
 					// TODO Auto-generated catch block
@@ -64,6 +64,7 @@ public class TestEntityView extends JFrame {
 				System.out.println(obj.getName());
 				try {
 					int i = testEntityManage.addTestEntity(obj);
+					System.out.println("i = " + i);
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
 					System.out.println("errror here");

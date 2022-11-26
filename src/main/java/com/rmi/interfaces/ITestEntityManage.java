@@ -7,6 +7,5 @@ import com.entities.TestEntity;
 
 public interface ITestEntityManage extends Remote {
 	public Integer addTestEntity(TestEntity obj)throws RemoteException;
-	public int  test() throws RemoteException;
 	
 }

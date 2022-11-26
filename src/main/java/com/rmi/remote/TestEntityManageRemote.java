@@ -10,20 +10,24 @@ import com.utils.ConnectDB;
 import dev.morphia.Datastore;
 
 public class TestEntityManageRemote extends UnicastRemoteObject implements ITestEntityManage {
-	Datastore datastore = ConnectDB.getDatastore();
+	Datastore datastore;
 
-	public TestEntityManageRemote() throws RemoteException {
+	public TestEntityManageRemote(Datastore datastore) throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
+		this.datastore = datastore;
 	}
 
 	public Integer addTestEntity(TestEntity obj) throws RemoteException {
 		// TODO Auto-generated method stub
-		
 		try {
-//			datastore.save(obj);
+			if(datastore == null) {
+				System.out.println("datastore null");
+				return 0;
+			}
+			datastore.save(obj);
 			System.out.println("insert ok");
-		}catch (Exception e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("insert error");
 			return 0;
@@ -31,10 +35,4 @@ public class TestEntityManageRemote extends UnicastRemoteObject implements ITest
 		return 1;
 	}
 
-	@Override
-	public int test() throws RemoteException {
-		// TODO Auto-generated method stub
-		return 1;
-	}
-	
 }

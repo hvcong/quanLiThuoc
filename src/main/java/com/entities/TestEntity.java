@@ -1,12 +1,14 @@
 package com.entities;
 
+import java.io.Serializable;
+
 import org.bson.types.ObjectId;
 
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Id;
 
 @Entity("testentities")
-public class TestEntity {
+public class TestEntity implements Serializable {
 	@Id
 	private ObjectId id;
 	private String name;
